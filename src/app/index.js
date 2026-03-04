@@ -65,7 +65,7 @@ app.get("/openapi.json", async (req, res) => {
     return { ...ep, url };
   });
   res.status(200).json({
-    title: "InuSoft API's.",
+    title: "ShunKazama API's.",
     description: "Welcome to the API documentation. This interactive interface allows you to explore and test our API endpoints in real-time.",
     baseURL,
     endpoints: enriched,
