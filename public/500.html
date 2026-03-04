@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Server Error - InuSoft API">
+    <meta name="theme-color" content="#ffffff">
+    <title>500 - Server Error | InuSoft API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Ubuntu Mono', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
+        }
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-800 antialiased font-mono min-h-screen">
+    <main class="max-w-2xl mx-auto px-8 py-16 min-h-screen flex items-center justify-center">
+        <div class="text-center w-full">
+            <!-- Animated 500 Graphic -->
+            <div class="pulse mb-8">
+                <div class="text-8xl font-bold gradient-text mb-4">500</div>
+                <div class="text-4xl mb-2">⚡</div>
+            </div>
+            
+            <h1 class="text-2xl font-bold text-slate-800 mb-4">Internal Server Error</h1>
+            
+            <p class="text-slate-600 text-sm mb-6 max-w-md mx-auto leading-relaxed">
+                Something went wrong on our end. Our team has been notified and is working to fix the issue. 
+                Please try again in a few moments.
+            </p>
+
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 max-w-md mx-auto">
+                <div class="flex items-start">
+                    <span class="material-icons text-red-500 mr-2 text-sm">error</span>
+                    <p class="text-red-700 text-xs text-left">
+                        <strong>Technical Details:</strong> The server encountered an unexpected condition that prevented it from fulfilling the request.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <p class="text-xs text-slate-500 font-medium">TRY THESE OPTIONS:</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button onclick="window.location.reload()" class="btn-gradient text-white px-6 py-3 text-sm font-medium inline-flex items-center justify-center">
+                        <span class="material-icons align-text-bottom mr-2 text-base">refresh</span>
+                        Reload Page
+                    </button>
+                    <a href="/" class="border border-gray-300 text-slate-700 px-6 py-3 text-sm font-medium inline-flex items-center justify-center hover:bg-gray-50 transition-colors">
+                        <span class="material-icons align-text-bottom mr-2 text-base">home</span>
+                        Go Home
+                    </a>
+                    <button onclick="goBack()" class="border border-gray-300 text-slate-700 px-6 py-3 text-sm font-medium inline-flex items-center justify-center hover:bg-gray-50 transition-colors">
+                        <span class="material-icons align-text-bottom mr-2 text-base">arrow_back</span>
+                        Go Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center space-y-2 mt-12">
+                <p class="text-slate-500 text-xs">
+                    © <span id="year"></span> InuSoft API — All Rights Reserved.
+                </p>
+                <p class="text-slate-500 text-xs space-x-3">
+                    <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+                    <span aria-hidden="true">|</span>
+                    <a href="/terms-of-service" class="hover:underline">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Go back function
+        function goBack() {
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+        
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const pulseElement = document.querySelector('.pulse');
+            pulseElement.style.animation = 'pulse 2s ease-in-out infinite';
+            
+            // Add shake effect to buttons on hover
+            const buttons = document.querySelectorAll('button, a');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.classList.add('shake');
+                    setTimeout(() => {
+                        this.classList.remove('shake');
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

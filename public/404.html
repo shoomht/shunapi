@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page Not Found - InuSoft API">
+    <meta name="theme-color" content="#ffffff">
+    <title>404 - Page Not Found | InuSoft API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Ubuntu Mono', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-800 antialiased font-mono min-h-screen">
+    <main class="max-w-2xl mx-auto px-8 py-16 min-h-screen flex items-center justify-center">
+        <div class="text-center w-full">
+            <!-- Animated 404 Graphic -->
+            <div class="floating mb-8">
+                <div class="text-8xl font-bold gradient-text mb-4">404</div>
+                <div class="text-4xl mb-2">🚧</div>
+            </div>
+            
+            <h1 class="text-2xl font-bold text-slate-800 mb-4">Page Not Found</h1>
+            
+            <p class="text-slate-600 text-sm mb-8 max-w-md mx-auto leading-relaxed">
+                Oops! The page you're looking for seems to have wandered off into the digital void. 
+                It might have been moved, deleted, or you entered an incorrect URL.
+            </p>
+
+            <div class="space-y-4 mb-8">
+                <p class="text-xs text-slate-500 font-medium">WHAT YOU CAN DO:</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="/" class="btn-gradient text-white px-6 py-3 text-sm font-medium inline-block">
+                        <span class="material-icons align-text-bottom mr-2 text-base">home</span>
+                        Go Back Home
+                    </a>
+                    <a href="https://github.com/synshin9" class="border border-gray-300 text-slate-700 px-6 py-3 text-sm font-medium inline-block hover:bg-gray-50 transition-colors">
+                        <span class="material-icons align-text-bottom mr-2 text-base">api</span>
+                        Riport Error
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center space-y-2 mt-12">
+                <p class="text-slate-500 text-xs">
+                    © <span id="year"></span> InuSoft API — All Rights Reserved.
+                </p>
+                <p class="text-slate-500 text-xs space-x-3">
+                    <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+                    <span aria-hidden="true">|</span>
+                    <a href="/terms-of-service" class="hover:underline">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingElement = document.querySelector('.floating');
+            floatingElement.style.animation = 'float 3s ease-in-out infinite';
+        });
+    </script>
+</body>
+</html>
